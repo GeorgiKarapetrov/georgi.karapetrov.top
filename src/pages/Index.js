@@ -5,27 +5,30 @@ import Main from '../layouts/Main';
 
 const Index = () => (
   <Main
-    description={"Michael D'Angelo's personal website. New York based Stanford ICME graduate, "
-    + 'VP of Engineering at Smile Identity, co-founder of Arthena and Matroid, and YC Alumni.'}
+    description={"Georgi Karapetrov's personal we site. Technology consultant, DevOps engineer and a mathematician dabbling in physics."}
   >
     <article className="post" id="index">
       <header>
         <div className="title">
-          <h2><Link to="/">About this site</Link></h2>
+          <h2><Link to="/about">Georgi Karapetrov</Link></h2>
           <p>
-            A beautiful, responsive, statically-generated,
-            react application written with modern Javascript.
+            Technology Consultant
           </p>
         </div>
       </header>
-      <p> Welcome to my website. Please feel free to read more <Link to="/about">about me</Link>,
-        or you can check out my {' '}
-        <Link to="/resume">resume</Link>, {' '}
-        <Link to="/projects">projects</Link>, {' '}
-        view <Link to="/stats">site statistics</Link>, {' '}
-        or <Link to="/contact">contact</Link> me.
+      <h1>Welcome</h1>
+      <p><br />You can <Link to="/about">read about me</Link>,
+        <br />
+        <Link to="/resume">check out my resume</Link>,
+        {/*
+        <Link to="/projects">projects</Link>,
+        */}
+        <br /><Link to="/stats">view some statistics</Link>,
+        <br />or <Link to="/contact">contact me</Link>.
       </p>
-      <p> Source available <a href="https://github.com/mldangelo/personal-site">here</a>.</p>
+      {/*
+      <p> Source available  on <a href="https://github.com/GeorgiKarapetrov/georgi.karapetrov.top">GitHub</a>.</p>
+      */}
     </article>
   </Main>
 );

@@ -1,232 +1,195 @@
+// TODO: Add Athletic Skills, Office Skills,
+// Data Engineering, Data Science, ML Engineering, ... ?
+
 const skills = [
   {
     title: 'Javascript',
-    competency: 4,
-    category: ['Web Development', 'Languages', 'Javascript'],
+    competency: 6,
+    category: ['Languages'],
   },
   {
-    title: 'Node.JS',
-    competency: 5,
-    category: ['Web Development', 'Javascript'],
-  },
-  {
-    title: 'React',
-    competency: 2,
-    category: ['Web Development', 'Javascript'],
-  },
-  {
-    title: 'Next.JS',
-    competency: 3,
-    category: ['Web Development', 'Javascript'],
+    title: 'ITIL',
+    competency: 7,
+    category: ['Other'],
   },
   {
     title: 'Bash',
-    competency: 2,
-    category: ['Tools', 'Languages'],
+    competency: 6,
+    category: ['Languages'],
   },
   {
-    title: 'Amazon Web Services',
+    title: 'SQL',
+    competency: 3,
+    category: ['Languages'],
+  },
+  {
+    title: 'LaTeX',
+    competency: 6,
+    category: ['Languages'],
+  },
+  {
+    title: 'Portainer',
     competency: 4,
-    category: ['Web Development', 'Tools'],
+    category: ['Containers/Virtualization'],
   },
   {
-    title: 'Heroku',
-    competency: 2,
-    category: ['Web Development', 'Tools'],
+    title: 'ESXi',
+    competency: 1,
+    category: ['Containers/Virtualization'],
   },
   {
-    title: 'MongoDB',
-    competency: 3,
-    category: ['Web Development', 'Databases'],
+    title: 'Arch based distributions',
+    competency: 6,
+    category: ['Linux'],
   },
   {
-    title: 'ElasticSearch',
-    competency: 2,
-    category: ['Web Development', 'Databases'],
+    title: 'Debian based distributions',
+    competency: 8,
+    category: ['Linux'],
   },
   {
-    title: 'PostgreSQL/SQLite3/SQL/Redshift',
+    title: 'RHEL based distributions',
     competency: 4,
-    category: ['Web Development', 'Databases', 'Languages'],
-  },
-  {
-    title: 'Redis',
-    competency: 3,
-    category: ['Web Development', 'Databases'],
-  },
-  {
-    title: 'Data Mining',
-    competency: 3,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Express.JS',
-    competency: 2,
-    category: ['Web Development', 'Javascript'],
-  },
-  {
-    title: 'D3',
-    competency: 2,
-    category: ['Web Development', 'Javascript'],
-  },
-  {
-    title: 'Flask',
-    competency: 3,
-    category: ['Web Development', 'Python'],
-  },
-  {
-    title: 'FastAPI',
-    competency: 3,
-    category: ['Web Development', 'Python'],
-  },
-  {
-    title: 'Git/Mercurial',
-    competency: 3,
-    category: ['Tools'],
+    category: ['Linux'],
   },
   {
     title: 'Kubernetes',
-    competency: 2,
-    category: ['Tools', 'Data Engineering'],
-  },
-  {
-    title: 'Google Cloud Compute',
-    competency: 2,
-    category: ['Tools', 'Web Development'],
-  },
-  {
-    title: 'AWS',
-    competency: 3,
-    category: ['Tools', 'Web Development'],
+    competency: 5,
+    category: ['Containers/Virtualization'],
   },
   {
     title: 'Docker',
-    competency: 3,
-    category: ['Tools', 'Data Engineering'],
+    competency: 6,
+    category: ['Containers/Virtualization'],
   },
   {
-    title: 'AWS Lambda',
-    competency: 3,
-    category: ['Tools', 'Web Development'],
+    title: 'Jenkins',
+    competency: 4,
+    category: ['CI/CD'],
   },
   {
-    title: 'Numpy',
-    competency: 3,
-    category: ['Data Science', 'Data Engineering', 'Python', 'ML Engineering'],
+    title: 'Artefactory',
+    competency: 4,
+    category: ['CI/CD'],
   },
   {
-    title: 'Numba',
+    title: 'SonarQube',
+    competency: 4,
+    category: ['CI/CD'],
+  },
+  {
+    title: 'Urban Code Deploy',
     competency: 2,
-    category: ['Data Science', 'Data Engineering', 'Python'],
+    category: ['CI/CD'],
   },
   {
-    title: 'Tensorflow + Keras',
-    competency: 3,
-    category: ['ML Engineering', 'Python'],
+    title: 'GitLab',
+    competency: 7,
+    category: ['CI/CD'],
   },
   {
-    title: 'PyTorch',
-    competency: 3,
-    category: ['ML Engineering', 'Python'],
+    title: 'Azure DevOps',
+    competency: 8,
+    category: ['CI/CD'],
   },
   {
-    title: 'Jupyter',
-    competency: 3,
-    category: ['Data Science', 'Python'],
-  },
-  {
-    title: 'Typescript',
-    competency: 3,
-    category: ['Web Development', 'Languages', 'Javascript'],
+    title: 'GitHub Actions',
+    competency: 0,
+    category: ['CI/CD', 'Happy-to-Pick-Up'],
   },
   {
     title: 'HTML + SASS/SCSS/CSS',
-    competency: 3,
-    category: ['Web Development', 'Languages'],
-  },
-  {
-    title: 'Python',
-    competency: 5,
-    category: ['Languages', 'Python', 'ML Engineering'],
-  },
-  {
-    title: 'Ruby',
     competency: 2,
     category: ['Languages'],
   },
   {
-    title: 'Ruby on Rails',
-    competency: 3,
-    category: ['Web Development', 'Languages'],
-  },
-  {
-    title: 'C++',
-    competency: 1,
+    title: 'Python/Jython',
+    competency: 6,
     category: ['Languages'],
   },
   {
-    title: 'Julia',
-    competency: 2,
-    category: ['Languages'],
-  },
-  {
-    title: 'MATLAB',
-    competency: 2,
-    category: ['Languages'],
-  },
-  {
-    title: 'R',
-    competency: 2,
-    category: ['Languages'],
-  },
-  {
-    title: 'Data Visualization',
-    competency: 3,
-    category: ['Data Science', 'Javascript'],
-  },
-  {
-    title: 'GraphQL',
-    competency: 2,
-    category: ['Web Development', 'Databases'],
-  },
-  {
-    title: 'Pandas',
-    competency: 5,
-    category: ['Data Engineering', 'ML Engineering', 'Python'],
-  },
-  {
-    title: 'Matplotlib',
-    competency: 3,
-    category: ['Data Engineering', 'ML Engineering', 'Python'],
-  },
-  {
-    title: 'Scikit-Learn',
+    title: 'Java',
     competency: 4,
-    category: ['Data Engineering', 'ML Engineering', 'Python'],
+    category: ['Languages'],
   },
   {
-    title: 'Spark',
-    competency: 2,
-    category: ['Data Engineering', 'ML Engineering'],
+    title: 'HCL',
+    competency: 5,
+    category: ['Languages'],
   },
   {
-    title: 'Dagster',
-    competency: 2,
-    category: ['Data Engineering', 'Python', 'ML Engineering'],
+    title: 'WSDL/XSD/XML',
+    competency: 5,
+    category: ['Languages'],
   },
   {
-    title: 'Mypy',
+    title: 'Mathematica',
+    competency: 6,
+    category: ['Languages'],
+  },
+  {
+    title: 'Cisco',
     competency: 3,
-    category: ['Python'],
+    category: ['Other'],
   },
   {
-    title: 'Pylint',
-    competency: 4,
-    category: ['Data Engineering', 'Python'],
+    title: 'NginX/Apache',
+    competency: 6,
+    category: ['Other'],
+  },
+  {
+    title: 'Terraform',
+    competency: 8,
+    category: ['Cloud'],
+  },
+  {
+    title: 'Azure',
+    competency: 6,
+    category: ['Cloud'],
+  },
+  {
+    title: 'AWS',
+    competency: 7,
+    category: ['Cloud'],
+  },
+  {
+    title: 'GCP',
+    competency: 0,
+    category: ['Cloud', 'Happy-to-Pick-Up'],
+  },
+  {
+    title: 'Proxmox',
+    competency: 0,
+    category: ['Happy-to-Pick-Up', 'Containers/Virtualization'],
+  },
+  {
+    title: 'KVM',
+    competency: 2,
+    category: ['Containers/Virtualization'],
+  },
+  {
+    title: 'Zabbix/Prometheus',
+    competency: 0,
+    category: ['Happy-to-Pick-Up', 'Monitoring'],
+  },
+  {
+    title: 'pfSense',
+    competency: 2,
+    category: ['Other'],
+  },
+  {
+    title: 'Packer',
+    competency: 0,
+    category: ['Happy-to-Pick-Up', 'Configuration Managment'],
+  },
+  {
+    title: 'Ansible',
+    competency: 0,
+    category: ['Happy-to-Pick-Up', 'Configuration Managment'],
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 
-// this is a list of colors that I like. The length should be === to the
+// this is a list of colors that I like. The length should be == to the
 // number of categories. Re-arrange this list until you find a pattern you like.
 const colors = [
   '#6968b3',
@@ -243,10 +206,12 @@ const colors = [
 ];
 
 const categories = [
-  ...new Set(skills.flatMap(({ category }) => category)),
-].sort().map((category, index) => ({
-  name: category,
-  color: colors[index],
-}));
+  ...new Set(skills.reduce((acc, { category }) => acc.concat(category), [])),
+]
+  .sort()
+  .map((category, index) => ({
+    name: category,
+    color: colors[index],
+  }));
 
 export { categories, skills };

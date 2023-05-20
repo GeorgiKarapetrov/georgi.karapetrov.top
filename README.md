@@ -1,5 +1,9 @@
 # Personal Website
 
+Forked from [mldangelo](https://github.com/mldangelo/personal-site)
+
+See: [georgi.karapetrov.top](https://georgi.karapetrov.top).
+
 Welcome to my [personal website](https://mldangelo.com)! This is an [MIT licensed](https://github.com/mldangelo/personal-site/blob/main/LICENSE) React-based Jamstack application. It offers a simple interface, easy modifications, static export capabilities, and free automatic deployments via [GitHub Pages](https://pages.github.com/).
 
 ## 🚀 Features
