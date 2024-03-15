@@ -1,0 +1,77 @@
+==================================================================
+https://keybase.io/georgi_devops
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://georgi.karapetrov.top
+  * I am georgi_devops (https://keybase.io/georgi_devops) on keybase.
+  * I have a public key with fingerprint 3337 5409 0A4E 5800 522D  7B5F 63BC AA9D B91D 2D60
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120f6810dd765972a66fb141863ce81ecdf3888347c22f4414d00e1b6b659f8f3250a",
+      "fingerprint": "333754090a4e5800522d7b5f63bcaa9db91d2d60",
+      "host": "keybase.io",
+      "key_id": "63bcaa9db91d2d60",
+      "kid": "0113c48abc2d6354b44b749a67de3a4e2262c685abcbe64f47c51aea9cbff90ed8fe0a",
+      "uid": "d9c76ed6cefafeb66f997f5c6d983919",
+      "username": "georgi_devops"
+    },
+    "merkle_root": {
+      "ctime": 1642247413,
+      "hash_meta": "b6fc67493b17dac7ff626b954c88af5d2cb94edee2b7f9faef58d8a62916cb35",
+      "seqno": 21640719
+    },
+    "revoke": {
+      "sig_ids": [
+        "df4508af25d3825719c49c3c7e45224739c6599ed580cd4585e382965e81703f0f"
+      ]
+    },
+    "service": {
+      "hostname": "georgi.karapetrov.top",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1642247427,
+  "expire_in": 157680000,
+  "prev": "e438e2d2d5feec57cca81485f10153678d4dc9b71e9ff249af1033d0a6584a97",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owFtk0uIHFUUhrtjRNMaVEZUcIJYBF04M973o03A4EYlCMosgiKV+zi3p+iZrp6q
+Sps49iIQQsCF40Z0kUVANyJuJMKIgUCWksgggjgbE3Qh2fjISoR4qnEQxVVRt/7z
+n6/+c+7m/js6vbnw5cfntw4sHu9+9bPvuBsX797IfBlPZf2NbAizB6xGqJt8WMSs
+nxHKSFKGkhi1klYzp1TyVFCjeABDIcTEjTFc6MBYEoKKSAhQrzzKk0mcSeKyhSwV
+owFU46oYNWjLOddSEEucAGkIkYxF7WVS3AfnbPSWRhYVwcKVsm4rEM67GpaKEs/w
+JZ/h/Y9+l5vyIIzzAY+5FF4Ir4V1Skfg2JQxxYIyEgUelEiIL6kDZ4NPyRKIJsGM
++8TMLtqgFUQVILkEHjOwVicZVLSGW2pbYQ3VyK0BqgdQVoMijzApx3U2XcjWoBqu
+Ql6VZdMmHJqi1VElGBNaUI5/6eqVfA0ah+VepaAQlnuqows6JcWUt1IEY1ySkQVv
+BUQA5nWyyUGSJhqnmKUqeC4Rpob1UZn1GbYgmlpEqBBmCG33uhhgeHXWv3z2tSwm
+IQm6Mhm5YRK1QdjAgwYhWzhuA87RQsQphSikkYA6qyTOXhOeSMpen7b9qkkRZvbt
+vP6Vw9LQVW4MTVVOlppyjHTjqmzKUK6iZKVpxnW/zag5NW5r3gCf/+2W+2IUcW2w
+YgJVXZQjzAyV/4mP6YUMTo6LCvKiVUitcKMIafvABC1BcAMM90MmgCB1CM5QYWSi
+hEqutIkiBus1BZsSwyXBD5xH4pQ0wln9T56UIacboCeGOHLNiQqyae/cxb2duV7n
+wEOP7+V6eV/vpWOdVxY38t2bduee9pp1evvu3z05/3339vHrv3Y3X/hk2r3rcv/o
+O3+eyU4frtSFg29Od57/6Oxnhw4/+tbmyxeK7ed+ef/ra/ccefHm3L0PHnts8ZuD
+v229t/3FlUuhe/vomXVxdc8z5t0PX12/8sDDt37a2b98a/nbG0vzN7d/XDl97vfv
+/ri0tf3Bkac/feLa2zuHrj45v3ly/NT89Z5/5L5nf/h8+hc=
+=I/QV
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/georgi_devops
+
+==================================================================
