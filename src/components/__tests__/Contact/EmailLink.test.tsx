@@ -6,30 +6,10 @@ import EmailLink from '../../Contact/EmailLink';
 describe('EmailLink', () => {
   beforeEach(() => {
     vi.useFakeTimers();
-    // Mock matchMedia for reduced motion preference
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: vi.fn().mockImplementation((query) => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addListener: vi.fn(),
-        removeListener: vi.fn(),
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-        dispatchEvent: vi.fn(),
-      })),
-    });
   });
 
   afterEach(() => {
     vi.useRealTimers();
-  });
-
-  it('renders the email domain', () => {
-    render(<EmailLink />);
-
-    expect(screen.getByText('@mldangelo.com')).toBeInTheDocument();
   });
 
   it('renders as a link element', () => {
@@ -39,30 +19,33 @@ describe('EmailLink', () => {
     expect(link).toBeInTheDocument();
   });
 
-  it('animates through messages over time', async () => {
+  it('renders the first email address', () => {
     render(<EmailLink />);
 
-    // Flush effects first
-    await act(async () => {
-      await Promise.resolve();
-    });
-
-    // Initial state shows 'hi' as default (accessibility: never show empty)
-    const prefix = document.querySelector('.contact-email-prefix');
-    expect(prefix?.textContent).toBe('hi');
-
-    // Advance through multiple messages to verify animation works
-    // Each message takes ~50 chars + 50 hold ticks at 50ms each
+    // Advance timer to type out first message
     act(() => {
-      vi.advanceTimersByTime(10000); // Advance 10 seconds
+      vi.advanceTimersByTime(500);
     });
 
-    // Animation should have progressed beyond 'hi'
-    // The component continues to animate through messages
-    expect(prefix).toBeInTheDocument();
+    const link = screen.getByRole('link');
+    expect(link).toBeInTheDocument();
+    // The link should be a mailto link
+    expect(link.getAttribute('href')).toMatch(/^mailto:/);
   });
 
-  it('pauses animation on mouse enter', async () => {
+  it('animates through email addresses over time', () => {
+    render(<EmailLink />);
+
+    // Advance through first message + hold + second message
+    act(() => {
+      vi.advanceTimersByTime(5000);
+    });
+
+    const link = screen.getByRole('link');
+    expect(link).toBeInTheDocument();
+  });
+
+  it('pauses animation on mouse enter', () => {
     render(<EmailLink />);
 
     const container = document.querySelector(
@@ -71,12 +54,10 @@ describe('EmailLink', () => {
 
     // Let animation run a bit
     act(() => {
-      vi.advanceTimersByTime(100);
+      vi.advanceTimersByTime(200);
     });
 
-    const prefixBefore = document.querySelector(
-      '.contact-email-prefix',
-    )?.textContent;
+    const textBefore = screen.getByRole('link').textContent;
 
     // Pause on hover
     fireEvent.mouseEnter(container);
@@ -86,15 +67,13 @@ describe('EmailLink', () => {
       vi.advanceTimersByTime(500);
     });
 
-    const prefixAfter = document.querySelector(
-      '.contact-email-prefix',
-    )?.textContent;
+    const textAfter = screen.getByRole('link').textContent;
 
     // Should be the same since animation is paused
-    expect(prefixAfter).toBe(prefixBefore);
+    expect(textAfter).toBe(textBefore);
   });
 
-  it('resumes animation on mouse leave', async () => {
+  it('resumes animation on mouse leave', () => {
     render(<EmailLink />);
 
     const container = document.querySelector(
@@ -119,41 +98,28 @@ describe('EmailLink', () => {
     expect(container).toBeInTheDocument();
   });
 
-  it('generates valid mailto href for valid email prefixes', () => {
+  it('loops messages when loopMessage is true (default)', () => {
     render(<EmailLink />);
 
-    // Advance time to get a valid email prefix
+    // Advance through both messages multiple times
     act(() => {
-      vi.advanceTimersByTime(150); // Type out 'hi'
+      vi.advanceTimersByTime(50000);
     });
 
-    const link = screen.getByRole('link');
-    expect(link.getAttribute('href')).toBe('mailto:hi@mldangelo.com');
-  });
-
-  it('has invalid class when email prefix is invalid', async () => {
-    render(<EmailLink />);
-
-    // Run through messages until we hit an invalid one
-    // "but not this :(  " contains invalid characters
-    act(() => {
-      vi.advanceTimersByTime(50 * 200); // Advance through several messages
-    });
-
-    // Check if link has container (component should still render)
+    // Component should still be active and rendering
     const container = document.querySelector('.contact-email-container');
     expect(container).toBeInTheDocument();
   });
 
-  it('loops messages when loopMessage is true', async () => {
-    render(<EmailLink loopMessage={true} />);
+  it('stops after all messages when loopMessage is false', () => {
+    render(<EmailLink loopMessage={false} />);
 
     // Advance through all messages
     act(() => {
-      vi.advanceTimersByTime(50 * 1000);
+      vi.advanceTimersByTime(50000);
     });
 
-    // Component should still be active and rendering
+    // Component should still render (just stopped animating)
     const container = document.querySelector('.contact-email-container');
     expect(container).toBeInTheDocument();
   });

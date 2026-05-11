@@ -1,0 +1,10 @@
+git checkout -b mldangelo-main main
+git pull https://github.com/mldangelo/personal-site.git main
+
+git checkout main
+git merge --no-ff mldangelo-main
+git push origin main
+# export NODE_ENV=production
+# export REACT_APP_GA_TRACKING_ID=G-6B2RCDD49R
+# git reflog expire --expire-unreachable=now --all
+# git gc --prune=now

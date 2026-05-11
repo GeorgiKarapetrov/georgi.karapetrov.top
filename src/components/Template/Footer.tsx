@@ -16,12 +16,12 @@ export default function Footer() {
             <ThemePortrait width={80} height={80} />
           </Link>
           <div className="footer-info">
-            <h3>Michael D&apos;Angelo</h3>
+            <h3>Georgi Karapetrov</h3>
             <p className="footer-role">{currentRole}</p>
             <p className="footer-copyright">
               &copy; {new Date().getFullYear()} ·{' '}
               <a
-                href="https://github.com/mldangelo/personal-site"
+                href="https://github.com/GeorgiKarapetrov/georgi.karapetrov.top"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="footer-links-grid">
               <Link href="/about">About</Link>
               <Link href="/resume">Resume</Link>
-              <Link href="/projects">Projects</Link>
+              <Link href="/stats">Stats</Link>
               <Link href="/contact">Contact</Link>
             </div>
           </nav>

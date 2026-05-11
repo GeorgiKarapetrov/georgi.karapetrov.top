@@ -107,6 +107,7 @@ export default function Skills({ skills, categories }: SkillsProps) {
       <div className="link-to" id="skills" />
       <div className="title">
         <h3>Skills</h3>
+        <p>These sections are silly, but everyone seems to have one.</p>
       </div>
       <div className="skill-button-container">{buttonElements}</div>
       <div className="skill-groups">

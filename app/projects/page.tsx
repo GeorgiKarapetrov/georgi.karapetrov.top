@@ -7,8 +7,7 @@ import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Archive',
-  description:
-    "Early projects and experiments from Michael D'Angelo (2015 and earlier).",
+  description: 'Projects and experiments by Georgi Karapetrov.',
   path: '/projects/',
 });
 
@@ -22,7 +21,7 @@ export default function ProjectsPage() {
         <header className="projects-header">
           <h1 className="page-title">Archive</h1>
           <p className="page-subtitle">
-            Early projects and experiments from my student years
+            A selection of projects that I&apos;m not too ashamed of
           </p>
         </header>
 

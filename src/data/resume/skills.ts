@@ -11,117 +11,111 @@ export interface Category {
   textColor: 'dark' | 'light';
 }
 
+// Competency values are on a scale of 1–5 (see MAX_COMPETENCY in utils.ts)
 const skills: Skill[] = [
-  // Languages
+  // DevOps
   {
-    title: 'Python',
-    competency: 5,
-    category: ['Languages', 'ML Engineering'],
-  },
-  {
-    title: 'TypeScript',
-    competency: 5,
-    category: ['Languages', 'Web Development'],
-  },
-  {
-    title: 'SQL',
+    title: 'CI/CD',
     competency: 4,
-    category: ['Languages', 'Databases'],
-  },
-  // AI & LLM
-  {
-    title: 'AI Agents',
-    competency: 5,
-    category: ['ML Engineering'],
+    category: ['DevOps'],
   },
   {
-    title: 'LLM Evaluation',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'AI Red-teaming',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'LLM APIs',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'RAG',
+    title: 'IaC',
     competency: 4,
-    category: ['ML Engineering'],
+    category: ['DevOps'],
   },
   {
-    title: 'Prompt Engineering',
+    title: 'GitOps',
     competency: 4,
-    category: ['ML Engineering'],
+    category: ['DevOps'],
   },
   {
-    title: 'Vector Databases',
+    title: 'CloudOps',
     competency: 4,
-    category: ['ML Engineering', 'Databases'],
+    category: ['DevOps'],
   },
+  // Infrastructure / Other
   {
-    title: 'PyTorch',
+    title: 'Kubernetes',
     competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Pandas',
-    competency: 5,
-    category: ['ML Engineering', 'Data Engineering'],
-  },
-  // Web Development
-  {
-    title: 'Node.js',
-    competency: 5,
-    category: ['Web Development'],
-  },
-  {
-    title: 'FastAPI',
-    competency: 4,
-    category: ['Web Development'],
-  },
-  {
-    title: 'Next.js',
-    competency: 3,
-    category: ['Web Development'],
-  },
-  // Databases
-  {
-    title: 'PostgreSQL',
-    competency: 4,
-    category: ['Databases'],
-  },
-  {
-    title: 'Redis',
-    competency: 3,
-    category: ['Databases'],
-  },
-  // Infrastructure
-  {
-    title: 'AWS',
-    competency: 4,
-    category: ['Infrastructure'],
+    category: ['Other'],
   },
   {
     title: 'Docker',
     competency: 4,
-    category: ['Infrastructure'],
+    category: ['Other'],
   },
   {
-    title: 'Kubernetes',
-    competency: 3,
-    category: ['Infrastructure'],
-  },
-  {
-    title: 'Observability',
+    title: 'Linux',
     competency: 4,
-    category: ['Infrastructure', 'ML Engineering'],
+    category: ['Other'],
   },
+  {
+    title: 'ITIL',
+    competency: 3,
+    category: ['Other'],
+  },
+  // Languages
+  {
+    title: 'GoLang',
+    competency: 4,
+    category: ['Languages'],
+  },
+  {
+    title: 'Python',
+    competency: 3,
+    category: ['Languages'],
+  },
+  {
+    title: 'Bash',
+    competency: 3,
+    category: ['Languages'],
+  },
+  {
+    title: 'SQL',
+    competency: 3,
+    category: ['Languages'],
+  },
+  {
+    title: 'HCL',
+    competency: 3,
+    category: ['Languages'],
+  },
+  {
+    title: 'LaTeX',
+    competency: 2,
+    category: ['Languages'],
+  },
+  {
+    title: 'Mathematica',
+    competency: 2,
+    category: ['Languages'],
+  },
+  {
+    title: 'Javascript',
+    competency: 2,
+    category: ['Languages'],
+  },
+  {
+    title: 'Java',
+    competency: 1,
+    category: ['Languages'],
+  },
+  // {
+  //   title: 'Proxmox',
+  //   competency: 0,
+  //   category: ['Happy-to-Pick-Up'],
+  // },
+  // {
+  //   title: 'Packer',
+  //   competency: 0,
+  //   category: ['Happy-to-Pick-Up'],
+  // },
+  // {
+  //   title: 'Ansible',
+  //   competency: 0,
+  //   category: ['Happy-to-Pick-Up'],
+  // },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 
 /**

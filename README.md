@@ -1,4 +1,8 @@
-# Personal Website Template
+# Personal Website
+
+Forked from [mldangelo](https://github.com/mldangelo/personal-site)
+
+See: [georgi.karapetrov.top](https://georgi.karapetrov.top).
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/mldangelo/personal-site/node.js.yml?branch=main)](https://github.com/mldangelo/personal-site/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)

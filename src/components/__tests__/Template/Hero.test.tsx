@@ -15,29 +15,23 @@ describe('Hero', () => {
     render(<Hero />);
 
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent("Michael D'Angelo");
+    expect(heading).toHaveTextContent('Georgi Karapetrov');
   });
 
-  it('renders the tagline with OpenAI and promptfoo links', () => {
+  it('renders the tagline with SAP Labs link', () => {
     render(<Hero />);
 
-    const openAiLink = screen.getByRole('link', { name: /openai/i });
-    expect(openAiLink).toHaveAttribute('href', 'https://openai.com');
-    expect(openAiLink).toHaveClass('hero-highlight');
-
-    const promptfooLink = screen.getByRole('link', { name: /promptfoo/i });
-    expect(promptfooLink).toHaveAttribute('href', 'https://promptfoo.dev');
-    expect(promptfooLink).toHaveClass('hero-highlight');
+    const sapLink = screen.getByRole('link', { name: /sap labs/i });
+    expect(sapLink).toHaveAttribute('href', 'https://www.sap.com/');
+    expect(sapLink).toHaveClass('hero-highlight');
   });
 
   it('displays hero chips for credentials', () => {
     render(<Hero />);
 
-    expect(screen.getByText('YC Alum')).toBeInTheDocument();
-    expect(screen.getByText('Stanford ICME')).toBeInTheDocument();
-    expect(
-      screen.getByText('Co-founded Arthena & Matroid'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Platform Engineering')).toBeInTheDocument();
+    expect(screen.getByText('DevOps')).toBeInTheDocument();
+    expect(screen.getByText('M.S. Mathematics KU Leuven')).toBeInTheDocument();
   });
 
   it('renders CTA buttons with correct links', () => {

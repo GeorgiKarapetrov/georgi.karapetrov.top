@@ -8,7 +8,8 @@ import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Stats',
-  description: "Some statistics about Michael D'Angelo and mldangelo.com",
+  description:
+    'Some statistics about Georgi Karapetrov and georgi.karapetrov.top',
   path: '/stats/',
 });
 

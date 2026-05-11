@@ -27,7 +27,7 @@ const raleway = Raleway({
 });
 
 const siteDescription =
-  'Member of the Technical Staff at OpenAI, working on Promptfoo and agent security. Previously co-founded Promptfoo, Arthena, and Matroid, and led engineering at Smile ID.';
+  "Georgi Karapetrov's personal website. Platform Engineer at SAP Labs, systems engineer, and FOSS enthusiast. Mathematician dabbling in physics.";
 
 export const metadata: Metadata = {
   title: {
@@ -37,13 +37,15 @@ export const metadata: Metadata = {
   description: siteDescription,
   keywords: [
     AUTHOR_NAME,
-    'OpenAI',
-    'Promptfoo',
-    'agent security',
-    'LLM security',
-    'machine learning',
-    'startup founder',
-    'YC',
+    'SAP Labs',
+    'Platform Engineer',
+    'DevOps',
+    'systems engineer',
+    'Kubernetes',
+    'FOSS',
+    'mathematics',
+    'Sofia',
+    'Bulgaria',
   ],
   authors: [{ name: AUTHOR_NAME }],
   creator: AUTHOR_NAME,

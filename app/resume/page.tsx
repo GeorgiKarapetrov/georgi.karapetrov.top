@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Courses from '@/components/Resume/Courses';
 import Education from '@/components/Resume/Education';
 import Experience from '@/components/Resume/Experience';
-import References from '@/components/Resume/References';
+// import References from '@/components/Resume/References';
 import ResumeNav from '@/components/Resume/ResumeNav';
 import Skills from '@/components/Resume/Skills';
 import PageWrapper from '@/components/Template/PageWrapper';
@@ -16,7 +16,7 @@ import { createPageMetadata } from '@/lib/metadata';
 export const metadata: Metadata = createPageMetadata({
   title: 'Resume',
   description:
-    "Michael D'Angelo's Resume. OpenAI, Promptfoo, Smile ID, Arthena, Matroid, Stanford ICME, YC alum.",
+    "Georgi Karapetrov's Resume. SAP Labs, VMware, Sciant, Micro Focus, Platform Engineer.",
   path: '/resume/',
 });
 
@@ -26,13 +26,17 @@ export default function ResumePage() {
       <section className="resume-page">
         <header className="resume-header">
           <h1 className="resume-title">Resume</h1>
+          <a
+            href="/GeorgiKarapetrovResume.pdf"
+            className="button button-secondary"
+          >
+            Download PDF
+          </a>
           <p className="resume-summary">
-            Engineering leader with 15+ years building products across AI,
-            security, and infrastructure. Currently Member of the Technical
-            Staff at OpenAI, where I work on Promptfoo and agent security.
-            Previously co-founded Promptfoo, built it into an AI security
-            platform, and sold it to OpenAI. Stanford MS, YC alum, previously VP
-            Engineering.
+            Platform Engineer with 10+ years of experience in software
+            development, DevOps, and cloud infrastructure. Currently working at
+            SAP Labs as a Platform Engineer. Previously at VMware, Sciant, and
+            Micro Focus.
           </p>
         </header>
 
@@ -55,9 +59,9 @@ export default function ResumePage() {
             <Courses data={courses} />
           </section>
 
-          <section id="references" className="resume-section">
+          {/* <section id="references" className="resume-section">
             <References />
-          </section>
+          </section> */}
         </div>
       </section>
     </PageWrapper>

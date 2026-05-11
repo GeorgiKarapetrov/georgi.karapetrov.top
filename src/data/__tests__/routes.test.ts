@@ -39,8 +39,12 @@ describe('routes', () => {
     expect(paths).toContain('/');
     expect(paths).toContain('/about');
     expect(paths).toContain('/resume');
-    expect(paths).toContain('/projects');
+    expect(paths).toContain('/stats');
     expect(paths).toContain('/contact');
+    expect(paths).toContain('/donate');
+    // Writing and Archive are commented out
+    expect(paths).not.toContain('/writing');
+    expect(paths).not.toContain('/projects');
   });
 
   it('has unique paths', () => {
