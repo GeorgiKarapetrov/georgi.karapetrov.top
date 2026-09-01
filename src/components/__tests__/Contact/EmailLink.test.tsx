@@ -3,12 +3,18 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import profile from '../../../data/profile.json';
 import EmailLink from '../../Contact/EmailLink';
 
-const [localPart, domain] = profile.email.split('@');
+// The finite set of full addresses the animation types through. EmailLink
+// derives this from profile.email (plus any extra addresses configured there),
+// so the test mirrors that: at minimum the canonical address is present.
+const aliases = [profile.email];
+
+function prefixText(): string {
+  return document.querySelector('.contact-email-prefix')?.textContent ?? '';
+}
 
 describe('EmailLink', () => {
   beforeEach(() => {
     vi.useFakeTimers();
-    // Mock matchMedia for reduced motion preference
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
       value: vi.fn().mockImplementation((query) => ({
@@ -28,189 +34,22 @@ describe('EmailLink', () => {
     vi.useRealTimers();
   });
 
-  it('renders the email domain', () => {
-    render(<EmailLink />);
-
-    expect(screen.getByText(`@${domain}`)).toBeInTheDocument();
-  });
-
   it('renders as a link element', () => {
     render(<EmailLink />);
-
-    const link = screen.getByRole('link');
-    expect(link).toBeInTheDocument();
+    expect(screen.getByRole('link')).toBeInTheDocument();
   });
 
-  it('animates through messages over time', async () => {
+  it('opens on the first full address before the animation advances', () => {
     render(<EmailLink />);
-
-    // Flush effects first
-    await act(async () => {
-      await Promise.resolve();
-    });
-
-    // Initial state shows the real local-part (accessibility: never show empty)
-    const prefix = document.querySelector('.contact-email-prefix');
-    expect(prefix?.textContent).toBe(localPart);
-
-    // Advance through multiple messages to verify animation works
-    // Each message takes ~50 chars + 50 hold ticks at 50ms each
-    act(() => {
-      vi.advanceTimersByTime(10000); // Advance 10 seconds
-    });
-
-    // Animation should have progressed beyond 'hi'
-    // The component continues to animate through messages
-    expect(prefix).toBeInTheDocument();
+    expect(prefixText()).toBe(aliases[0]);
   });
 
-  /**
-   * Advancing used to reset to zero characters, leaving `message` empty for a
-   * tick. The render fell back to the static local part, so the prefix snapped
-   * back to the real address for one frame at every one of the fifteen message
-   * boundaries — a visible flicker on the deployed page.
-   */
-  it('never blanks or snaps back to the address mid-animation', () => {
+  it('always links to the canonical address, whatever alias is shown', () => {
     render(<EmailLink loopMessage />);
-    const prefix = () =>
-      document.querySelector('.contact-email-prefix')?.textContent ?? '';
-
-    let previous = prefix();
-
-    // Two full cycles, so the loop wrap is covered as well as every boundary.
-    for (let elapsed = 0; elapsed < 120_000; elapsed += 50) {
-      act(() => {
-        vi.advanceTimersByTime(50);
-      });
-
-      const shown = prefix();
-
-      // The blank frame itself.
-      expect(shown).not.toBe('');
-
-      // The flash is a *jump* to the complete address from some other alias
-      // already several characters long. Looping re-types the address
-      // legitimately, but that grows "h" -> "hi", so the previous frame is a
-      // single character and this guard leaves it alone.
-      if (previous.length > 1 && previous !== localPart) {
-        expect(shown).not.toBe(localPart);
-      }
-
-      previous = shown;
-    }
-  });
-
-  it('stays settled once the animation completes', () => {
-    const { container } = render(<EmailLink />);
-
-    act(() => {
-      vi.advanceTimersByTime(120_000);
-    });
-
-    const settled = document.querySelector(
-      '.contact-email-prefix',
-    )?.textContent;
-
-    // A finished animation recorded completion only in `isActive`, so RESUME's
-    // `idx < maxIdx` check passed and every mouse-out re-armed the interval.
-    const wrapper = container.querySelector(
-      '.contact-email-container',
-    ) as HTMLElement;
-    fireEvent.mouseEnter(wrapper);
-    fireEvent.mouseLeave(wrapper);
-
-    act(() => {
-      vi.advanceTimersByTime(5_000);
-    });
-
-    expect(document.querySelector('.contact-email-prefix')?.textContent).toBe(
-      settled,
-    );
-  });
-
-  it('pauses animation on mouse enter', async () => {
-    render(<EmailLink />);
-
-    const container = document.querySelector(
-      '.contact-email-container',
-    ) as HTMLElement;
-
-    // Let animation run a bit
-    act(() => {
-      vi.advanceTimersByTime(100);
-    });
-
-    const prefixBefore = document.querySelector(
-      '.contact-email-prefix',
-    )?.textContent;
-
-    // Pause on hover
-    fireEvent.mouseEnter(container);
-
-    // Advance time
-    act(() => {
-      vi.advanceTimersByTime(500);
-    });
-
-    const prefixAfter = document.querySelector(
-      '.contact-email-prefix',
-    )?.textContent;
-
-    // Should be the same since animation is paused
-    expect(prefixAfter).toBe(prefixBefore);
-  });
-
-  it('resumes animation on mouse leave', async () => {
-    render(<EmailLink />);
-
-    const container = document.querySelector(
-      '.contact-email-container',
-    ) as HTMLElement;
-
-    // Pause
-    fireEvent.mouseEnter(container);
-
-    act(() => {
-      vi.advanceTimersByTime(100);
-    });
-
-    // Resume
-    fireEvent.mouseLeave(container);
-
-    // Animation should be running again (no error)
-    act(() => {
-      vi.advanceTimersByTime(100);
-    });
-
-    expect(container).toBeInTheDocument();
-  });
-
-  it('generates valid mailto href for valid email prefixes', () => {
-    render(<EmailLink />);
-
-    // Advance time to get a valid email prefix
-    act(() => {
-      vi.advanceTimersByTime(150); // Type out 'hi'
-    });
-
-    const link = screen.getByRole('link');
-    expect(link.getAttribute('href')).toBe(`mailto:${profile.email}`);
-  });
-
-  /**
-   * Three of the joke aliases are not valid email local-parts, including
-   * "but not this :(  ". Those used to replace the anchor with an
-   * aria-disabled, unfocusable span, leaving the contact page with no way to
-   * reach anyone for roughly a fifth of the animation cycle.
-   */
-  it('keeps a working email link through the entire animation cycle', () => {
-    render(<EmailLink loopMessage />);
-
     for (let elapsed = 0; elapsed < 60_000; elapsed += 250) {
       act(() => {
         vi.advanceTimersByTime(250);
       });
-
       const link = screen.getByRole('link');
       expect(link).toHaveAttribute('href', `mailto:${profile.email}`);
       expect(link).not.toHaveAttribute('aria-disabled');
@@ -219,13 +58,9 @@ describe('EmailLink', () => {
 
   it('names the link by its real destination, not the animated alias', () => {
     render(<EmailLink />);
-
     act(() => {
       vi.advanceTimersByTime(50 * 200);
     });
-
-    // The alias changes ~20x/second; an accessible name that mutated with it
-    // would be unusable, so the visible text is decorative.
     expect(
       screen.getByRole('link', { name: `Email ${profile.email}` }),
     ).toBeInTheDocument();
@@ -235,16 +70,73 @@ describe('EmailLink', () => {
     );
   });
 
-  it('loops messages when loopMessage is true', async () => {
-    render(<EmailLink loopMessage={true} />);
+  it('never blanks mid-animation', () => {
+    render(<EmailLink loopMessage />);
+    for (let elapsed = 0; elapsed < 120_000; elapsed += 50) {
+      act(() => {
+        vi.advanceTimersByTime(50);
+      });
+      expect(prefixText()).not.toBe('');
+    }
+  });
 
-    // Advance through all messages
+  it('only ever shows a leading slice of one configured alias', () => {
+    render(<EmailLink loopMessage />);
+    for (let elapsed = 0; elapsed < 60_000; elapsed += 50) {
+      act(() => {
+        vi.advanceTimersByTime(50);
+      });
+      const shown = prefixText();
+      expect(aliases.some((alias) => alias.startsWith(shown))).toBe(true);
+    }
+  });
+
+  it('pauses animation on mouse enter', () => {
+    render(<EmailLink />);
+    const container = document.querySelector(
+      '.contact-email-container',
+    ) as HTMLElement;
     act(() => {
-      vi.advanceTimersByTime(50 * 1000);
+      vi.advanceTimersByTime(200);
     });
+    const before = prefixText();
+    fireEvent.mouseEnter(container);
+    act(() => {
+      vi.advanceTimersByTime(500);
+    });
+    expect(prefixText()).toBe(before);
+  });
 
-    // Component should still be active and rendering
-    const container = document.querySelector('.contact-email-container');
+  it('resumes animation on mouse leave', () => {
+    render(<EmailLink />);
+    const container = document.querySelector(
+      '.contact-email-container',
+    ) as HTMLElement;
+    fireEvent.mouseEnter(container);
+    act(() => {
+      vi.advanceTimersByTime(100);
+    });
+    fireEvent.mouseLeave(container);
+    act(() => {
+      vi.advanceTimersByTime(100);
+    });
     expect(container).toBeInTheDocument();
+  });
+
+  it('stays settled once the animation completes', () => {
+    const { container } = render(<EmailLink />);
+    act(() => {
+      vi.advanceTimersByTime(120_000);
+    });
+    const settled = prefixText();
+    const wrapper = container.querySelector(
+      '.contact-email-container',
+    ) as HTMLElement;
+    fireEvent.mouseEnter(wrapper);
+    fireEvent.mouseLeave(wrapper);
+    act(() => {
+      vi.advanceTimersByTime(5_000);
+    });
+    expect(prefixText()).toBe(settled);
   });
 });

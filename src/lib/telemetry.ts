@@ -17,6 +17,9 @@ import profile from '@/data/profile.json';
  */
 export const BIRTH_DATE = profile.birthDate;
 
+/** Marriage instant, used for the live "married for" readout on the stats page. */
+export const MARRIAGE_DATE = profile.marriageDate;
+
 /** Milliseconds in an average year, accounting for leap years. */
 export const MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365.2421897;
 
@@ -58,14 +61,27 @@ export function ageIntervalFor(precision: number): number {
 }
 
 /**
- * Age in years at a given instant, fixed to `precision` decimal places.
+ * Elapsed years since `startIso` at a given instant, fixed to `precision`
+ * decimal places.
  *
  * Takes `now` rather than reading the clock so the result is deterministic
  * and testable.
  */
+export function yearsSinceAt(
+  now: number,
+  precision: number,
+  startIso: string,
+): string {
+  const startTime = new Date(startIso).getTime();
+  return ((now - startTime) / MS_PER_YEAR).toFixed(precision);
+}
+
+/**
+ * Age in years at a given instant, fixed to `precision` decimal places.
+ * A thin wrapper over {@link yearsSinceAt} anchored at {@link BIRTH_DATE}.
+ */
 export function ageAt(now: number, precision: number): string {
-  const birthTime = new Date(BIRTH_DATE).getTime();
-  return ((now - birthTime) / MS_PER_YEAR).toFixed(precision);
+  return yearsSinceAt(now, precision, BIRTH_DATE);
 }
 
 /**

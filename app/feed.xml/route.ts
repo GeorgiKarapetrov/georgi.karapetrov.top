@@ -72,7 +72,7 @@ export async function GET() {
   <channel>
     <title>${escapeXml(AUTHOR_NAME)} - Writing</title>
     <link>${SITE_URL}/writing/</link>
-    <description>Articles on AI security, LLM red teaming, and trust &amp; safety by ${escapeXml(AUTHOR_NAME)}.</description>
+    <description>Writing by ${escapeXml(AUTHOR_NAME)}.</description>
     <language>en-us</language>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>${rssItems}

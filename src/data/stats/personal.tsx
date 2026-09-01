@@ -6,9 +6,13 @@ import {
   agePlaceholder,
   COUNTRIES_VISITED,
   CURRENT_CITY,
+  MARRIAGE_DATE,
 } from '@/lib/telemetry';
 
 import type { StatData } from '../../components/Stats/types';
+
+/** Decimal places for the marriage readout. */
+const MARRIAGE_PRECISION = 9;
 
 /**
  * The stats page reports age at deliberately absurd precision.
@@ -26,21 +30,47 @@ function Age() {
   );
 }
 
+/** A live "married for" readout, anchored at the marriage date. */
+function Marriage() {
+  const ref = useLiveAge<HTMLSpanElement>(MARRIAGE_PRECISION, MARRIAGE_DATE);
+
+  return (
+    <span className="stat-live" ref={ref}>
+      {agePlaceholder(MARRIAGE_PRECISION)} years
+    </span>
+  );
+}
+
 const data: StatData[] = [
+  {
+    key: 'givenName',
+    label: 'The anglicization of my name is',
+    value: 'George',
+  },
+  {
+    key: 'familyName',
+    label: 'My family name means',
+    value: 'Blackstone',
+  },
   {
     key: 'age',
     label: 'Current age',
     value: <Age />,
   },
   {
+    key: 'marriage',
+    label: 'Married for',
+    value: <Marriage />,
+  },
+  {
     key: 'countries',
     label: 'Countries visited',
     value: COUNTRIES_VISITED,
-    link: 'https://www.google.com/maps/d/embed?mid=1iBBTscqateQ93pWFVfHCUZXoDu8&z=2',
+    link: 'https://www.google.com/maps/d/embed?mid=1IrgOfUSRP2aBhPE0RV0noWMAfhol4Uyv',
   },
   {
     key: 'location',
-    label: 'Current city',
+    label: 'Home city',
     value: CURRENT_CITY,
   },
 ];

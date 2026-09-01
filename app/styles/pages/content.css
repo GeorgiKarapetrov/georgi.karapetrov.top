@@ -350,26 +350,29 @@
 }
 
 .contact-email-link:hover {
-  background: transparent;
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent-hover);
+  background: color-mix(in srgb, var(--color-accent-light) 70%, var(--color-accent) 30%);
+  transform: translateY(var(--lift-sm));
+  box-shadow: var(--shadow-md);
 }
 
-/* Flex items default to min-width:auto and refuse to shrink below their
-   content, so the wrapping allowed on the link above never reached the long
-   animated alias. Both halves have to opt in individually. */
-.contact-email-prefix,
-.contact-email-domain {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.contact-email-prefix {
-  color: var(--color-accent);
-}
-
-.contact-email-domain {
+.contact-email-address {
   color: var(--color-fg-bold);
+}
+
+/* Invalid email state - grayed out */
+.contact-email-link--invalid {
+  background: var(--color-border-bg);
+  cursor: default;
+}
+
+.contact-email-link--invalid:hover {
+  background: var(--color-border-bg);
+  transform: none;
+  box-shadow: none;
+}
+
+.contact-email-link--invalid .contact-email-address {
+  color: var(--color-fg-light);
 }
 
 .contact-hint {

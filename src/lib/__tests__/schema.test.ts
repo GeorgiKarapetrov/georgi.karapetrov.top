@@ -92,9 +92,10 @@ describe('personNode', () => {
 
   it('uses author name and split given/family names', () => {
     const node = personNode();
+    const [givenName, ...familyParts] = AUTHOR_NAME.split(' ');
     expect(node.name).toBe(AUTHOR_NAME);
-    expect(node.givenName).toBe('Michael');
-    expect(node.familyName).toBe("D'Angelo");
+    expect(node.givenName).toBe(givenName);
+    expect(node.familyName).toBe(familyParts.join(' '));
   });
 
   it('exposes an ImageObject and social sameAs links', () => {
@@ -112,7 +113,7 @@ describe('personNode', () => {
     const node = personNode();
     const worksFor = node.worksFor as Record<string, unknown>;
     expect(worksFor['@type']).toBe('Organization');
-    expect(worksFor.name).toBe('OpenAI');
+    expect(worksFor.name).toBe('SAP Labs');
     const alumniOf = node.alumniOf as Record<string, unknown>[];
     expect(alumniOf[0]['@type']).toBe('CollegeOrUniversity');
   });

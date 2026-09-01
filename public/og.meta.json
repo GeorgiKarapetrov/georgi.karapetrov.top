@@ -4,13 +4,13 @@
     "height": 630
   },
   "profile": {
-    "name": "Michael D'Angelo",
-    "employer": "OpenAI",
-    "focus": "Promptfoo and Codex Security",
-    "countriesVisited": 53,
-    "computingSince": 1993,
-    "currentCity": "New York, NY"
+    "name": "Georgi Karapetrov",
+    "employer": "SAP Labs",
+    "focus": "IAM and Secret Managment",
+    "countriesVisited": 7,
+    "computingSince": 1992,
+    "currentCity": "Sofia, Bulgaria"
   },
-  "generatorDigest": "69f9406c836e1571b913cecb43e10ae4517ea8749e55735d6e3bc700fb85f241",
-  "imageDigest": "916adc2a96bbdc30d68db9b291927d346cad40e9a12ae7384f8332cd7ed882a2"
+  "generatorDigest": "2c4102ee1cd3cdc023124587a26b9b97098f95588aa00f8fa425d4d43711f04f",
+  "imageDigest": "166e94450fbe9b47ba48916aea5a089034778ef87c1e4f22c689398051c41a70"
 }

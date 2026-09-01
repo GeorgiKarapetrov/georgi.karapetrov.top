@@ -23,7 +23,7 @@ export default function Footer() {
             <p className="footer-copyright">
               &copy; {new Date().getFullYear()} ·{' '}
               <a
-                href="https://github.com/mldangelo/personal-site"
+                href="https://github.com/GeorgiKarapetrov/georgi.karapetrov.top"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -45,7 +45,7 @@ export default function Footer() {
             </span>
             <div className="footer-links-grid">
               {routes
-                .filter((route) => !route.index)
+                .filter((route) => !route.index && route.primary !== false)
                 .map((route) => (
                   <Link key={route.path} href={route.path}>
                     {route.label}

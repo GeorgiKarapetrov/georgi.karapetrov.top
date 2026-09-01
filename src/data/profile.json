@@ -1,11 +1,12 @@
 {
-  "name": "Michael D'Angelo",
-  "role": "Member of the Technical Staff",
-  "employer": "OpenAI",
-  "focus": "Promptfoo and Codex Security",
-  "birthDate": "1990-02-05T09:24:00-05:00",
-  "computingSince": 1993,
-  "countriesVisited": 53,
-  "currentCity": "New York, NY",
-  "email": "hi@mldangelo.com"
+  "name": "Georgi Karapetrov",
+  "role": "Platform Engineer",
+  "employer": "SAP Labs",
+  "focus": "IAM and Secret Managment",
+  "birthDate": "1989-05-12",
+  "marriageDate": "2021-03-27",
+  "computingSince": 1992,
+  "countriesVisited": 7,
+  "currentCity": "Sofia, Bulgaria",
+  "email": "Georgi.D.Karapetrov@gmail.com"
 }

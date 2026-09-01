@@ -15,23 +15,12 @@ export default function Hero() {
 
           <p className="hero-tagline">
             I&apos;m a {profile.role} at{' '}
-            <a href="https://openai.com" className="hero-highlight">
+            <a href="https://www.sap.com" className="hero-highlight">
               {profile.employer}
             </a>
-            , working on{' '}
-            <a href="https://promptfoo.dev" className="hero-highlight">
-              Promptfoo
-            </a>{' '}
-            and{' '}
-            <a
-              href="https://openai.com/index/codex-security-now-in-research-preview/"
-              className="hero-highlight"
-            >
-              Codex Security
-            </a>
-            . I help secure AI systems and use AI to find software
-            vulnerabilities. I co-founded Promptfoo before it joined OpenAI in
-            2026.
+            , building secret management and IAM for the SAP Cloud.
+            <br />A mathematician dabbling in physics, systems engineer, and
+            FOSS enthusiast.
           </p>
 
           <div className="hero-cta">

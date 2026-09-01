@@ -15,7 +15,7 @@ import { AUTHOR_NAME } from '@/lib/utils';
 
 const PROJECTS_URL = `${SITE_URL}/projects/`;
 
-const PROJECTS_DESCRIPTION = `Early projects and experiments from ${AUTHOR_NAME} (2015 and earlier).`;
+const PROJECTS_DESCRIPTION = `Projects and experiments from ${AUTHOR_NAME}`;
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Archive',
@@ -46,9 +46,7 @@ export default function ProjectsPage() {
       <section className="projects-page">
         <header className="projects-header">
           <h1 className="page-title">Archive</h1>
-          <p className="page-subtitle">
-            Early projects and experiments from my student years
-          </p>
+          <p className="page-subtitle">Projects and experiments</p>
         </header>
 
         {featuredProjects.length > 0 && (

@@ -2,7 +2,12 @@
 
 import { type RefObject, useEffect, useRef } from 'react';
 
-import { ageAt, ageIntervalFor, agePlaceholder } from '@/lib/telemetry';
+import {
+  ageIntervalFor,
+  agePlaceholder,
+  BIRTH_DATE,
+  yearsSinceAt,
+} from '@/lib/telemetry';
 
 import usePrefersReducedMotion from './usePrefersReducedMotion';
 
@@ -35,6 +40,7 @@ import usePrefersReducedMotion from './usePrefersReducedMotion';
  */
 export default function useLiveAge<T extends HTMLElement = HTMLSpanElement>(
   precision: number,
+  startIso: string = BIRTH_DATE,
 ): RefObject<T | null> {
   const ref = useRef<T>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -47,7 +53,7 @@ export default function useLiveAge<T extends HTMLElement = HTMLSpanElement>(
     }
 
     const tick = () => {
-      node.textContent = ageAt(Date.now(), precision);
+      node.textContent = yearsSinceAt(Date.now(), precision, startIso);
     };
     const interval = ageIntervalFor(precision);
     let timer: ReturnType<typeof setInterval> | undefined;
@@ -82,7 +88,7 @@ export default function useLiveAge<T extends HTMLElement = HTMLSpanElement>(
       // remount does not inherit a stale reading.
       node.textContent = agePlaceholder(precision);
     };
-  }, [precision, prefersReducedMotion]);
+  }, [precision, startIso, prefersReducedMotion]);
 
   return ref;
 }

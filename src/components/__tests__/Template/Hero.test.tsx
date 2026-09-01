@@ -15,44 +15,15 @@ describe('Hero', () => {
     render(<Hero />);
 
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent("Michael D'Angelo");
+    expect(heading).toHaveTextContent('Georgi Karapetrov');
   });
 
-  it('describes the current work and Promptfoo joining OpenAI', () => {
-    const { container } = render(<Hero />);
+  it('renders the tagline with an employer link', () => {
+    render(<Hero />);
 
-    const openAiLink = screen.getByRole('link', { name: /openai/i });
-    expect(openAiLink).toHaveAttribute('href', 'https://openai.com');
-    expect(openAiLink).toHaveClass('hero-highlight');
-
-    const promptfooLink = screen.getByRole('link', { name: /promptfoo/i });
-    expect(promptfooLink).toHaveAttribute('href', 'https://promptfoo.dev');
-    expect(promptfooLink).toHaveClass('hero-highlight');
-
-    const codexSecurityLink = screen.getByRole('link', {
-      name: 'Codex Security',
-    });
-    expect(codexSecurityLink).toHaveAttribute(
-      'href',
-      'https://openai.com/index/codex-security-now-in-research-preview/',
-    );
-    expect(codexSecurityLink).toHaveClass('hero-highlight');
-
-    expect(container.querySelector('.hero-tagline')).toHaveTextContent(
-      "I'm a Member of the Technical Staff at OpenAI, working on Promptfoo and Codex Security. I help secure AI systems and use AI to find software vulnerabilities. I co-founded Promptfoo before it joined OpenAI in 2026.",
-    );
-  });
-
-  it('keeps personal stats and incomplete credential lists off the homepage', () => {
-    const { container } = render(<Hero />);
-
-    expect(container.querySelector('.telemetry')).not.toBeInTheDocument();
-    expect(container.querySelector('.hero-chips')).not.toBeInTheDocument();
-    expect(screen.queryByText('Countries visited')).not.toBeInTheDocument();
-    expect(screen.queryByText('Computing since')).not.toBeInTheDocument();
-    expect(screen.queryByText('Based in')).not.toBeInTheDocument();
-    expect(screen.queryByText('YC Alum')).not.toBeInTheDocument();
-    expect(screen.queryByText('Stanford ICME')).not.toBeInTheDocument();
+    const employerLink = screen.getByRole('link', { name: /sap/i });
+    expect(employerLink).toHaveAttribute('href', 'https://www.sap.com');
+    expect(employerLink).toHaveClass('hero-highlight');
   });
 
   it('renders one primary CTA and one quieter resume link', () => {

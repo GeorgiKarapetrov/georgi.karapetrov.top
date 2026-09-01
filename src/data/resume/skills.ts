@@ -10,116 +10,109 @@ export interface Category {
 }
 
 const skills: Skill[] = [
-  // Languages
+  // Other / Platform
   {
-    title: 'Python',
-    competency: 5,
-    category: ['Languages', 'ML Engineering'],
-  },
-  {
-    title: 'TypeScript',
-    competency: 5,
-    category: ['Languages', 'Web Development'],
-  },
-  {
-    title: 'SQL',
-    competency: 4,
-    category: ['Languages', 'Databases'],
-  },
-  // AI & LLM
-  {
-    title: 'AI Agents',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'LLM Evaluation',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'AI Red-teaming',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'LLM APIs',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'RAG',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Prompt Engineering',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Vector Databases',
-    competency: 4,
-    category: ['ML Engineering', 'Databases'],
-  },
-  {
-    title: 'PyTorch',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Pandas',
-    competency: 5,
-    category: ['ML Engineering', 'Data Engineering'],
-  },
-  // Web Development
-  {
-    title: 'Node.js',
-    competency: 5,
-    category: ['Web Development'],
-  },
-  {
-    title: 'FastAPI',
-    competency: 4,
-    category: ['Web Development'],
-  },
-  {
-    title: 'Next.js',
-    competency: 3,
-    category: ['Web Development'],
-  },
-  // Databases
-  {
-    title: 'PostgreSQL',
-    competency: 4,
-    category: ['Databases'],
-  },
-  {
-    title: 'Redis',
-    competency: 3,
-    category: ['Databases'],
-  },
-  // Infrastructure
-  {
-    title: 'AWS',
-    competency: 4,
-    category: ['Infrastructure'],
-  },
-  {
-    title: 'Docker',
-    competency: 4,
-    category: ['Infrastructure'],
+    title: 'ITIL',
+    competency: 6,
+    category: ['Other'],
   },
   {
     title: 'Kubernetes',
-    competency: 3,
-    category: ['Infrastructure'],
+    competency: 8,
+    category: ['Other'],
   },
   {
-    title: 'Observability',
-    competency: 4,
-    category: ['Infrastructure', 'ML Engineering'],
+    title: 'Docker',
+    competency: 7,
+    category: ['Other'],
   },
+  {
+    title: 'Linux',
+    competency: 7,
+    category: ['Other'],
+  },
+  // DevOps
+  {
+    title: 'CloudOps',
+    competency: 7,
+    category: ['DevOps'],
+  },
+  {
+    title: 'CI/CD',
+    competency: 8,
+    category: ['DevOps'],
+  },
+  {
+    title: 'IaC',
+    competency: 8,
+    category: ['DevOps'],
+  },
+  {
+    title: 'GitOps',
+    competency: 7,
+    category: ['DevOps'],
+  },
+  // Languages
+  {
+    title: 'Javascript',
+    competency: 3,
+    category: ['Languages'],
+  },
+  {
+    title: 'Bash',
+    competency: 5,
+    category: ['Languages'],
+  },
+  {
+    title: 'SQL',
+    competency: 5,
+    category: ['Languages'],
+  },
+  {
+    title: 'GoLang',
+    competency: 7,
+    category: ['Languages'],
+  },
+  {
+    title: 'LaTeX',
+    competency: 4,
+    category: ['Languages'],
+  },
+  {
+    title: 'Python',
+    competency: 6,
+    category: ['Languages'],
+  },
+  {
+    title: 'Java',
+    competency: 2,
+    category: ['Languages'],
+  },
+  {
+    title: 'HCL',
+    competency: 5,
+    category: ['Languages'],
+  },
+  {
+    title: 'Mathematica',
+    competency: 4,
+    category: ['Languages'],
+  },
+  // {
+  //   title: 'Proxmox',
+  //   competency: 0,
+  //   category: ['Happy-to-Pick-Up'],
+  // },
+  // {
+  //   title: 'Packer',
+  //   competency: 0,
+  //   category: ['Happy-to-Pick-Up'],
+  // },
+  // {
+  //   title: 'Ansible',
+  //   competency: 0,
+  //   category: ['Happy-to-Pick-Up'],
+  // },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 
 /**

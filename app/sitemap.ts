@@ -51,6 +51,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    {
+      url: `${SITE_URL}/donate/`,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
     ...postEntries,
   ];
 }

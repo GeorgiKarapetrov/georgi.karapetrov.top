@@ -16,6 +16,7 @@ describe('sitemap', () => {
         expect.objectContaining({ url: `${SITE_URL}/writing/` }),
         expect.objectContaining({ url: `${SITE_URL}/stats/` }),
         expect.objectContaining({ url: `${SITE_URL}/contact/` }),
+        expect.objectContaining({ url: `${SITE_URL}/donate/` }),
       ]),
     );
   });
@@ -30,7 +31,17 @@ describe('sitemap', () => {
     ).toBe(true);
   });
 
-  it('uses trailing slashes for post routes', () => {
+  it('does not invent modification dates for static pages', () => {
+    const staticEntries = sitemap().filter(
+      (entry) => !entry.url.startsWith(`${SITE_URL}/writing/`),
+    );
+
+    expect(
+      staticEntries.every((entry) => entry.lastModified === undefined),
+    ).toBe(true);
+  });
+
+  it('uses trailing slashes for any post routes', () => {
     const entries = sitemap();
     const postEntries = entries.filter(
       (entry) =>
@@ -38,7 +49,8 @@ describe('sitemap', () => {
         entry.url !== `${SITE_URL}/writing/`,
     );
 
-    expect(postEntries.length).toBeGreaterThan(0);
+    // Post entries are optional (may be empty), but any that exist must be
+    // canonical trailing-slash URLs.
     expect(postEntries.every((entry) => entry.url.endsWith('/'))).toBe(true);
   });
 });

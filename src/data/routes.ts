@@ -22,23 +22,29 @@ const routes: Route[] = [
     path: '/resume',
   },
   {
-    label: 'Writing',
-    path: '/writing',
-  },
-  {
     label: 'Stats',
     path: '/stats',
-    primary: false,
   },
   {
     label: 'Contact',
     path: '/contact',
   },
   {
+    label: 'Donate',
+    path: '/donate',
+  },
+  // Routable but intentionally kept out of the primary nav.
+  {
     label: 'Archive',
     path: '/projects',
     primary: false,
   },
+  /*
+  {
+    label: 'Writing',
+    path: '/writing',
+  },
+  */
 ];
 
 export default routes;

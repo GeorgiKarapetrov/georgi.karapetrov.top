@@ -57,16 +57,13 @@ describe('Site', () => {
 
     expect(screen.getByText('Number of spoons')).toBeInTheDocument();
     expect(screen.getByText('Number of linter warnings')).toBeInTheDocument();
-    expect(
-      screen.getByText('Lines of TypeScript powering this website'),
-    ).toBeInTheDocument();
   });
 
   it('fetches GitHub data at build time', async () => {
     await Site();
 
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://api.github.com/repos/mldangelo/personal-site',
+      'https://api.github.com/repos/GeorgiKarapetrov/georgi.karapetrov.top',
       expect.objectContaining({
         headers: expect.objectContaining({
           Accept: 'application/vnd.github.v3+json',
@@ -80,7 +77,7 @@ describe('Site', () => {
     render(Component);
 
     const links = document.querySelectorAll(
-      'a[href="https://github.com/mldangelo/personal-site/stargazers"]',
+      'a[href="https://github.com/GeorgiKarapetrov/georgi.karapetrov.top/stargazers"]',
     );
     expect(links.length).toBeGreaterThan(0);
   });
@@ -99,7 +96,7 @@ describe('Site', () => {
     expect(
       screen.getByText('Open github issues and pull requests'),
     ).toBeInTheDocument();
-    expect(screen.getByText('Last updated at')).toBeInTheDocument();
+    expect(screen.getByText('Last updated on')).toBeInTheDocument();
   });
 
   it('uses fallback data when fetch fails', async () => {

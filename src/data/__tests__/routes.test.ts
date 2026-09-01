@@ -39,8 +39,9 @@ describe('routes', () => {
     expect(paths).toContain('/');
     expect(paths).toContain('/about');
     expect(paths).toContain('/resume');
-    expect(paths).toContain('/projects');
+    expect(paths).toContain('/stats');
     expect(paths).toContain('/contact');
+    expect(paths).toContain('/donate');
   });
 
   it('has unique paths', () => {
@@ -70,6 +71,7 @@ describe('routes', () => {
       .filter((route) => route.primary === false)
       .map((route) => route.path);
 
-    expect(secondaryPaths).toEqual(['/stats', '/projects']);
+    // Archive (/projects) is routable but delisted; everything else is primary.
+    expect(secondaryPaths).toEqual(['/projects']);
   });
 });

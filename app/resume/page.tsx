@@ -3,21 +3,20 @@ import type { Metadata } from 'next';
 import Courses from '@/components/Resume/Courses';
 import Education from '@/components/Resume/Education';
 import Experience from '@/components/Resume/Experience';
-import References from '@/components/Resume/References';
+// import References from '@/components/Resume/References';
 import ResumeNav from '@/components/Resume/ResumeNav';
 import Skills from '@/components/Resume/Skills';
 import PageWrapper from '@/components/Template/PageWrapper';
-import profile from '@/data/profile.json';
 import courses from '@/data/resume/courses';
 import degrees from '@/data/resume/degrees';
 import { categories, skills } from '@/data/resume/skills';
 import work from '@/data/resume/work';
 import { createPageMetadata } from '@/lib/metadata';
-import { AUTHOR_NAME, SITE_URL } from '@/lib/utils';
+import { AUTHOR_NAME } from '@/lib/utils';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Resume',
-  description: `${AUTHOR_NAME}'s Resume. OpenAI, Promptfoo, Smile ID, Arthena, Matroid, Stanford ICME, YC alum.`,
+  description: `${AUTHOR_NAME}'s Resume. SAP, VMware, Sciant, Micro Focus. KU Leuven and University of Sofia.`,
   path: '/resume/',
 });
 
@@ -28,23 +27,20 @@ export default function ResumePage() {
         <header className="resume-header">
           <h1 className="resume-title">Resume</h1>
           <p className="resume-summary">
-            Engineering leader with 15+ years building products across AI,
-            security, and infrastructure. I&apos;m currently a Member of the
-            Technical Staff at OpenAI, working on Promptfoo and Codex Security.
-            I help secure AI systems and use AI to find software
-            vulnerabilities. I co-founded Promptfoo before it joined OpenAI in
-            2026. Stanford MS, YC alum, previously VP Engineering.
+            Platform and DevOps engineer with a background in mathematics.
+            Currently building secret management and IAM solutions for the SAP
+            Cloud. Previously drove a DBaaS to General Availability at VMware
+            and ran cloud operations, Kubernetes, and CI/CD at Sciant. M.S. in
+            Mathematics from KU Leuven.
           </p>
-          {/* Print-only, but real markup rather than CSS `content`, so it is
-              selectable, linkable, and reads from the shared profile. The
-              screen layout carries these in the footer, which print hides. */}
-          <address className="resume-print-contact">
-            <a href={`${SITE_URL}/`}>{SITE_URL.replace(/^https?:\/\//, '')}</a>
-            <span aria-hidden="true"> · </span>
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            <span aria-hidden="true"> · </span>
-            <a href="https://github.com/mldangelo">github.com/mldangelo</a>
-          </address>
+          <a
+            className="resume-download button button-secondary"
+            href="/GeorgiKarapetrovResume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download PDF
+          </a>
         </header>
 
         <ResumeNav />
@@ -66,9 +62,11 @@ export default function ResumePage() {
             <Courses data={courses} />
           </section>
 
+          {/*
           <section id="references" className="resume-section">
             <References />
           </section>
+          */}
         </div>
       </section>
     </PageWrapper>

@@ -31,10 +31,9 @@ describe('Navigation', () => {
 
   it('renders the logo link to home', () => {
     render(<Navigation />);
-    const logo = screen.getByRole('link', {
-      name: /michael d'angelo.*home/i,
-    });
+    const logo = screen.getByRole('link', { name: /home/i });
     expect(logo).toHaveAttribute('href', '/');
+    expect(logo).toHaveTextContent('GK');
   });
 
   it('labels the primary navigation landmark', () => {
@@ -48,15 +47,19 @@ describe('Navigation', () => {
   it('renders only primary navigation routes', () => {
     render(<Navigation />);
 
+    // Should have links for About, Resume, Stats, Contact, Donate
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /resume/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /writing/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /donate/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /stats/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
+    // Archive (/projects) is secondary (primary: false), so it is hidden.
     expect(
       screen.queryByRole('link', { name: /archive/i }),
     ).not.toBeInTheDocument();
+    // Writing is delisted entirely.
     expect(
-      screen.queryByRole('link', { name: /stats/i }),
+      screen.queryByRole('link', { name: /writing/i }),
     ).not.toBeInTheDocument();
   });
 

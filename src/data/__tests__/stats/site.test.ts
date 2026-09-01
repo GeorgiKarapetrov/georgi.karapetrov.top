@@ -75,4 +75,14 @@ describe('site stats data', () => {
     expect(locStat!.key).toBe('source_lines');
     expect(locStat!.value).toBeUndefined();
   });
+
+  it('links point to the personal repository', () => {
+    const statsWithLinks = data.filter((s) => s.link);
+
+    for (const stat of statsWithLinks) {
+      expect(stat.link).toContain(
+        'github.com/GeorgiKarapetrov/georgi.karapetrov.top',
+      );
+    }
+  });
 });

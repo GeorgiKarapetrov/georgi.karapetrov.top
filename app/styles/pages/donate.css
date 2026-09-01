@@ -1,0 +1,63 @@
+/* ========================================
+   DONATE PAGE STYLES (/donate)
+   ======================================== */
+
+.donate-page {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.donate-header {
+  margin-bottom: var(--spacing-8);
+}
+
+.donate-header .page-title {
+  margin-bottom: var(--spacing-2);
+  letter-spacing: -0.04em;
+}
+
+.donate-content {
+  line-height: 1.85;
+}
+
+/* Coin heading with inline logo */
+.donate-content h4 {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin: var(--spacing-8) 0 var(--spacing-4);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-fg-bold);
+}
+
+.donate-content h4 img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Wallet addresses render inside a <pre> from the indented markdown block */
+.donate-content pre {
+  overflow-x: auto;
+  margin: 0 0 var(--spacing-4);
+  padding: var(--spacing-4);
+  border: 1px solid var(--color-border-bg);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-bg-alt) 92%, transparent);
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-sm);
+  color: var(--color-fg);
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+/* QR code images */
+.donate-content > p img {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 0 0 var(--spacing-8);
+  border-radius: var(--radius-md);
+}

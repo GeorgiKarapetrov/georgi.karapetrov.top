@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import { getWritingItems } from '@/lib/writing';
@@ -6,25 +6,16 @@ import HomePage from '../page';
 import WritingPage from '../writing/page';
 
 describe('writing information architecture', () => {
-  it('surfaces the three newest dated items on the homepage', () => {
-    const expected = getWritingItems()
-      .filter((item) => item.date)
-      .slice(0, 3);
+  it('does not surface a writing section on the homepage', () => {
+    render(<HomePage />);
 
-    const { container } = render(<HomePage />);
-    const section = screen.getByRole('region', { name: 'Latest writing' });
-    const cards = container.querySelectorAll('.home-writing-item');
-
-    expect(cards).toHaveLength(3);
+    // Writing is intentionally delisted from the homepage.
     expect(
-      [...cards].map((card) => card.querySelector('h3')?.textContent),
-    ).toEqual(expected.map((item) => item.title));
-    expect(
-      within(section).getByRole('link', { name: 'View all' }),
-    ).toHaveAttribute('href', '/writing');
+      screen.queryByRole('region', { name: 'Latest writing' }),
+    ).not.toBeInTheDocument();
   });
 
-  it('groups owned essays, external articles, and guides under real headings', () => {
+  it('groups owned essays and external articles under real headings', () => {
     const { container } = render(<WritingPage />);
 
     expect(
@@ -36,9 +27,14 @@ describe('writing information architecture', () => {
         name: 'Selected writing elsewhere',
       }),
     ).toBeInTheDocument();
+
+    // The Guides heading only renders when undated guide entries exist.
+    const hasGuides = getWritingItems().some(
+      (item) => item.isExternal && !item.date,
+    );
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Guides' }),
-    ).toBeInTheDocument();
+      screen.queryByRole('heading', { level: 2, name: 'Guides' }) !== null,
+    ).toBe(hasGuides);
 
     expect(container.querySelectorAll('.writing-item h3')).toHaveLength(
       getWritingItems().length,
@@ -51,7 +47,13 @@ describe('writing information architecture', () => {
     const featured = container.querySelectorAll('.writing-item--featured');
 
     expect(featured).toHaveLength(1);
-    expect(featured[0]).toHaveAttribute('href', newest?.url);
+    // Next normalises the rendered href; compare without a trailing slash so
+    // the assertion does not depend on that detail.
+    const stripSlash = (value: string | null | undefined) =>
+      (value ?? '').replace(/\/$/, '');
+    expect(stripSlash(featured[0]?.getAttribute('href'))).toBe(
+      stripSlash(newest?.url),
+    );
   });
 
   it('shows provenance beside every external-link arrow', () => {

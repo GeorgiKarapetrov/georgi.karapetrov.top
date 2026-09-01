@@ -7,11 +7,11 @@ import {
 } from '../writing';
 
 describe('getWritingItems', () => {
-  it('merges published local posts and external writing newest first', () => {
+  it('lists published local posts newest first', () => {
     const items = getWritingItems();
 
+    // This fork keeps at least one on-site post and no external writing.
     expect(items.some((item) => !item.isExternal)).toBe(true);
-    expect(items.some((item) => item.isExternal)).toBe(true);
 
     const dated = items.filter((item) => item.date);
     expect(

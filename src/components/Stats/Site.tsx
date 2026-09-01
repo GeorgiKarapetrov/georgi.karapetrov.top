@@ -31,11 +31,11 @@ interface GitHubStatsResult {
  * Refreshed: 2026-07-25
  */
 const FALLBACK_DATA: GitHubData = {
-  stargazers_count: 1663,
-  subscribers_count: 23,
-  forks: 979,
-  open_issues_count: 2,
-  pushed_at: '2026-07-25T00:00:00Z',
+  stargazers_count: 0,
+  subscribers_count: 1,
+  forks: 0,
+  open_issues_count: 0,
+  pushed_at: new Date().toISOString(),
 };
 
 /**
@@ -53,7 +53,7 @@ async function fetchGitHubStats(): Promise<GitHubStatsResult> {
   try {
     const token = process.env.GITHUB_TOKEN;
     const response = await fetch(
-      'https://api.github.com/repos/mldangelo/personal-site',
+      'https://api.github.com/repos/GeorgiKarapetrov/georgi.karapetrov.top',
       {
         headers: {
           Accept: 'application/vnd.github.v3+json',

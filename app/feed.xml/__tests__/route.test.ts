@@ -10,9 +10,7 @@ describe('feed.xml route', () => {
     const xml = await response.text();
 
     expect(xml).toContain(`${SITE_URL}/writing/`);
-    expect(xml).toContain(`${SITE_URL}/writing/claude-code-outage/`);
-    expect(xml).toContain(`${SITE_URL}/writing/eurostar-chatbot-analysis/`);
-    expect(xml).toContain(`${SITE_URL}/writing/shipping-with-claude-code/`);
+    expect(xml).toContain(`${SITE_URL}/writing/hello-world/`);
   });
 
   it('keeps the feed self link file-like', async () => {
@@ -23,12 +21,13 @@ describe('feed.xml route', () => {
     expect(xml).not.toContain(`${SITE_URL}/feed.xml/`);
   });
 
-  it('derives lastBuildDate from content rather than the build clock', async () => {
+  it('derives lastBuildDate from the newest post rather than the build clock', async () => {
     const response = await GET();
     const xml = await response.text();
 
+    // hello-world is dated 2025-06-15; the feed anchors lastBuildDate on it.
     expect(xml).toContain(
-      '<lastBuildDate>Tue, 10 Mar 2026 12:00:00 GMT</lastBuildDate>',
+      '<lastBuildDate>Sun, 15 Jun 2025 12:00:00 GMT</lastBuildDate>',
     );
   });
 });

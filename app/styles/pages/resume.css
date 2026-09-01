@@ -89,6 +89,12 @@
   margin: 0;
 }
 
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--spacing-5);
+}
+
 /* Section index — a row of mono labels on a rule, not a pill bar. */
 .resume-nav {
   display: flex;
